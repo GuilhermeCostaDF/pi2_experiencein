@@ -1,7 +1,6 @@
 <!-- experiencein/perfis/template/perfil.html -->
 
 {% extends "base.html" %}
-
 {% block body %}
 <div class="row">
     <div class="col-lg-12">
@@ -11,8 +10,13 @@
           <abbr title="Telefone">Tel:</abbr> {{perfil.telefone}}<br>
           <a href="mailto:{{perfil.email}}">{{perfil.email}}</a>
         </address>
-            <a class="btn btn-info" role="button" href="{% url 'convidar' perfil.id %}">Convidar</a>
-        
+
+    {% if ja_e_contato %}
+        <div class="well well-sm">Vocês estão conectados!</div>
+    {% else %}
+        <a href="{% url 'convidar' perfil.id %}" class="btn btn-success" role="button">convidar</a>
+    {% endif %}
+
     </div>
 </div>
 {% endblock %}
